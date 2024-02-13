@@ -1,0 +1,45 @@
+---
+name: "Docker SSH Push"
+description: "Push a docker image built by github actions to a remote server via SSH"
+author: "FringeCore_"
+inputs:
+  images:
+    description: "Docker image(s) to push, one image per line if multiple"
+    required: true
+  ssh-host:
+    description: "The remote server's hostname or IP address"
+    required: true
+  ssh-user:
+    description: "The username of the remote user that will be use to log in"
+    required: true
+  ssh-private-key:
+    description: "Private key to use to connect to remote server. If not provided, the default SSH keys present in ~/.ssh will be used"
+    required: false
+  ssh-port:
+    description: "SSH port for the remote machine"
+    required: false
+  ssh-config-path:
+    description: "SSH config file path to use to connect to remote server"
+    required: false
+  ssh-remote-public-key:
+    description: "Remote server's public key for secure connection. If not provided, keys from ~/.ssh/known_hosts will be used"
+    required: false
+  ssh-skip-host-key-verification:
+    description: "If true, the host key verification will be skipped (StrictHostKeyChecking=no) (not recommended)"
+    default: false
+  local-binding:
+    description: "Local <host>:<port> to use to host serve the image"
+    default: "127.0.0.1:31031"
+  remote-binding:
+    description: "Remote <host>:<port> to use to host pull the image form"
+    default: "127.0.0.1:31031"
+
+runs:
+  using: 'node20'
+  main: 'dist/main/index.js'
+  post: 'dist/post/index.js'
+  pre: 'dist/pre/index.js'
+
+branding:
+  icon: 'upload-cloud'
+  color: 'gray-dark'

@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es2021",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "dist"
+    },
+    "ts-node": {
+        "swc": true
+    }
+}
