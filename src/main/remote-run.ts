@@ -26,7 +26,7 @@ function _remoteRunImpl(
             throw Error(`Invalid value ${value} for ${key}`);
         }
     }
-    const commands = [`${options.sshUser}@${options.sshHost}`, commandToRun];
+    const commands = [`${options.sshUser}@${options.sshHost}`];
     options.sshPrivateKeyPath && commands.push('-i', options.sshPrivateKeyPath);
     options.sshSkipHostKeyVerification &&
         commands.push('-o', 'StrictHostKeyChecking=no');
@@ -34,7 +34,7 @@ function _remoteRunImpl(
         commands.push('-o', `UserKnownHostsFile=${options.sshKnownHostsPath}`);
     options.sshConfigPath && commands.push('-F', options.sshConfigPath);
     options.sshPort && commands.push('-p', `${options.sshPort}`);
-
+    commands.push(commandToRun);
     try {
         const { status, stderr, stdout } = spawnSync('ssh', commands);
         if (status === null) throw Error('null status');
