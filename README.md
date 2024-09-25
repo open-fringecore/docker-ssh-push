@@ -31,7 +31,7 @@ To use the Docker SSH Push action in your workflow, add the following step:
 
 ```yaml
 - name: Push Docker Image via SSH
-  uses: open-fringecore/docker-ssh-push@v0.1.1-beta
+  uses: open-fringecore/docker-ssh-push@v0.1.2-beta
   with:
       images: |
           your-docker-image:latest

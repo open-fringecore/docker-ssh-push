@@ -1,6 +1,6 @@
 {
   "name": "docker-ssh-push",
-  "version": "0.1.1-beta",
+  "version": "0.1.2-beta",
   "description": "A GitHub Action to push Docker images to a remote server via SSH",
   "main": "dist/main/index.js",
   "scripts": {
